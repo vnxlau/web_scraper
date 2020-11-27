@@ -1,0 +1,120 @@
+2020-11-27 02:05:30 Price of FM21
+HRK Game30.51
+Gamivo32.03
+Eneba32.95
+CJS-CDKeys33.60
+Kinguin33.89
+Kinguin33.90
+Eneba33.90
+Kinguin33.99
+Gamingdragons34.95
+Kinguin34.99
+Gamers Outlet34.99
+CDKeys.com34.99
+Gamebillet35.31
+Gamebillet35.67
+ElectronicFirst35.99
+Eneba36.19
+Gamesrocket EU37.95
+Instant Gaming38.08
+Mmoga38.36
+Mmoga39.99
+2Game UK40.97
+Gamesrocket UK41.89
+Gamesplanet US42.49
+Punktid42.49
+CDKeys.com43.99
+Eneba43.99
+Gamingdragons44.99
+Gamesplanet UK45.09
+G2A49.04
+Dlgamer EU53.77
+Play-Asia53.86
+Gamesrocket UK54.99
+Livecards ES54.99
+livecards.eu0.02
+2Game EU0.02
+Gamesplanet FR31.90
+VOIDU EU32.00
+2020-11-27 02:05:31END
+
+2020-11-27 02:06:51 Price of FM21
+HRK Game | 30.51
+Gamivo | 32.03
+Eneba | 32.95
+CJS-CDKeys | 33.60
+Kinguin | 33.89
+Kinguin | 33.90
+Eneba | 33.90
+Kinguin | 33.99
+Gamingdragons | 34.95
+Kinguin | 34.99
+Gamers Outlet | 34.99
+CDKeys.com | 34.99
+Gamebillet | 35.31
+Gamebillet | 35.67
+ElectronicFirst | 35.99
+Eneba | 36.19
+Gamesrocket EU | 37.95
+Instant Gaming | 38.08
+Mmoga | 38.36
+Mmoga | 39.99
+2Game UK | 40.97
+Gamesrocket UK | 41.89
+Gamesplanet US | 42.49
+Punktid | 42.49
+CDKeys.com | 43.99
+Eneba | 43.99
+Gamingdragons | 44.99
+Gamesplanet UK | 45.09
+G2A | 49.04
+Dlgamer EU | 53.77
+Play-Asia | 53.86
+Gamesrocket UK | 54.99
+Livecards ES | 54.99
+livecards.eu | 0.02
+2Game EU | 0.02
+Gamesplanet FR | 31.90
+VOIDU EU | 32.00
+2020-11-27 02:06:52END
+
+2020-11-27 02:07:30 Price of FM21
+HRK Game	30.51
+Gamivo	32.03
+Eneba	32.95
+CJS-CDKeys	33.60
+Kinguin	33.89
+Kinguin	33.90
+Eneba	33.90
+Kinguin	33.99
+Gamingdragons	34.95
+Kinguin	34.99
+Gamers Outlet	34.99
+CDKeys.com	34.99
+Gamebillet	35.31
+Gamebillet	35.67
+ElectronicFirst	35.99
+Eneba	36.19
+Gamesrocket EU	37.95
+Instant Gaming	38.08
+Mmoga	38.36
+Mmoga	39.99
+2Game UK	40.97
+Gamesrocket UK	41.89
+Gamesplanet US	42.49
+Punktid	42.49
+CDKeys.com	43.99
+Eneba	43.99
+Gamingdragons	44.99
+Gamesplanet UK	45.09
+G2A	49.04
+Dlgamer EU	53.77
+Play-Asia	53.86
+Gamesrocket UK	54.99
+Livecards ES	54.99
+livecards.eu	0.02
+2Game EU	0.02
+Gamesplanet FR	31.90
+VOIDU EU	32.00
+2020-11-27 02:07:31END
+
