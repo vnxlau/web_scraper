@@ -1,9 +1,12 @@
 #!/usr/bin/python3
 
 from requests import get
-
 from my_classes import GamePrices, VendorPrice, Price, BeautifulSoup, datetime, jsonpickle
 
+print("load just written")
+with open("storeprices.json", "r") as f:
+    oldjson =jsonpickle.decode(f.read())
+    print(oldjson.vendorPrices[0].vendor)
 
 url = 'https://www.allkeyshop.com/blog/buy-football-manager-2021-cd-key-compare-prices/'
 response = get(url)
