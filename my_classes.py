@@ -15,13 +15,23 @@ class Price:
 
 class VendorPrice:
     pass
-    def __init__(self, vendor, type, Price):
+    def __init__(self, id, merchantid, vendor, edition, Price):
+        self.id = id
+        self.merchantid = merchantid
         self.vendor = vendor
-        self.type = type
+        self.edition = edition
         self.list_prices = []
-        self.list_prices = { Price.scrapeDate, Price.price }
+        self.list_prices.append(Price)
     def toJSON(self):
         return jsonpickle.encode(self) 
+    def equals(self, target):
+        if (self.id == target.id and 
+            self.merchantid == target.merchantid and 
+            self.vendor == target.vendor and 
+            self.edition == target.edition):
+            return True
+        else:
+            return False
 
 class GamePrices:
     pass
