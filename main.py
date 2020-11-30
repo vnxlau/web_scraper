@@ -3,12 +3,14 @@
 from requests import get
 from my_classes import GamePrices, VendorPrice, Price, BeautifulSoup, datetime, jsonpickle
 import getopt, sys
+from pprint import pprint
 
 def help_main():
-    print("This is help\n")
+    print("For program help use:\n\t -h or --help\n\nCheck prices now:\n\t-n or --now\n")
+    print("To feed data file use:\n\t-f or --feed\n\nGet Cheapest price use:\n\t-c or --cheapest\n")
 
 def cheapest():
-    print("This is cheapest\n")
+    #print("This is cheapest\n")
     hasOldFile = False
     print('[1] - Loading previous data file....', end="")
     try:
@@ -20,17 +22,26 @@ def cheapest():
         print('/!\\ No file found a new one will be created!')
         pass
     except :
-        print("json shit KO!!")
+        print("json shit KO!")
         pass
 
-    lowestPrice = VendorPrice()
-    
+    print("[2] - Checking lowest price.....", end="")
+    lowestPrice = "ad"
     if hasOldFile:
         lowestPrice = oldjson.vendorPrices[0]
-        for s in oldjson:
+        for s in oldjson.vendorPrices:
+            #print("checking: " + s.vendor + " - " + s.edition)
+            for p in s.list_prices:
+                #print("price: " + p.price + " (" + p.scrapeDate + ")")
+                if p.price < lowestPrice.list_prices[0].price:
+                    lowestPrice = s
+                    lowestPrice.list_prices = []
+                    lowestPrice.list_prices.append(p)
+    print("Finished!\n")
+    print("Lowest price: " + lowestPrice.vendor + " - " + lowestPrice.edition)
+    print("Price: " + lowestPrice.list_prices[0].price + " (" + lowestPrice.list_prices[0].scrapeDate + ")")
+    #print("Lowest price: "+lowestPrice.vendor)
             
-            
-
 def now():
     print('[1] - Getting url......', end="")
     url = 'https://www.allkeyshop.com/blog/buy-football-manager-2021-cd-key-compare-prices/'
@@ -143,7 +154,7 @@ if len(arguments) == 0:
 
 for current_argument, current_value in arguments:
     if current_argument in ("-h", "--help"):
-        print ("Displaying help")
+        print ("\n")
         help_main()
     if current_argument in ("-c", "--cheapest"):
         print ("Entering check cheapest price mode")
@@ -157,4 +168,4 @@ for current_argument, current_value in arguments:
     #elif current_argument in ("-n", "--now"):
     #    print (("Enabling special output mode (%s)") % (current_value))
 
-print("End Price of FM21: ", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+print("\nEnd Price of FM21: ", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
