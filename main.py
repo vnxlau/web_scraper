@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 
 from requests import get
 from my_classes import GamePrices, VendorPrice, Price, BeautifulSoup, datetime, jsonpickle
