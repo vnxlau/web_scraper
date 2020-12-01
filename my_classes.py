@@ -37,5 +37,6 @@ class GamePrices:
     pass
     def __init__(self):
         self.vendorPrices = [] 
+        self.counter = 0
     def toJSON(self):
         return jsonpickle.encode(self) 

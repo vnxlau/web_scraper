@@ -4,10 +4,17 @@ from requests import get
 from my_classes import GamePrices, VendorPrice, Price, BeautifulSoup, datetime, jsonpickle
 import getopt, sys
 from pprint import pprint
+from datetime import datetime
+
+date_format = "%Y-%m-%d %H:%M:%S"
 
 def help_main():
-    print("For program help use:\n\t -h or --help\n\nCheck prices now:\n\t-n or --now\n")
-    print("To feed data file use:\n\t-f or --feed\n\nGet Cheapest price use:\n\t-c or --cheapest\n")
+    print("For program help use:\n\t -h or --help\n")
+    print("Feed data file use:\n\t-f or --feed\n")
+    print("Get prices NOW use:\n\t-n or --now\n")
+    print("Get CHEAPEST price ever use:\n\t-c or --cheapest\n")
+    print("Get LATEST data feed date use:\n\t-l or --latest-fetch\n")
+    print("Get total AMOUNT of feeds use:\n\t-a or --fetch-amounts\n")
 
 def cheapest():
     #print("This is cheapest\n")
@@ -68,14 +75,14 @@ def now():
         vendorPrice = VendorPrice(offer[3], offer[4], offer[0], offer[1], Price(offer[2]))
         games.vendorPrices.append(vendorPrice)
 
-    print("Finished!")
+    print("Finished!\n")
     print(*offers, sep="\n")
     
-    text = input("Feed data to data file? (s/N)")
+    text = input("\nFeed data to data file? (s/N)")
     if text == 's' or text == 'S':
         feed()
     else:
-        print("Finished!")
+        print("Data not feed to file - program will exit now!")
 
 def feed():
     hasOldFile = False
@@ -115,7 +122,6 @@ def feed():
             offers.append(array)
 
     games = GamePrices()
-
     for offer in offers:
         vendorPrice = VendorPrice(offer[3], offer[4], offer[0], offer[1], Price(offer[2]))
         if hasOldFile:
@@ -127,21 +133,69 @@ def feed():
 
     print("Finished!")
     print("[4] - Writng to data file......", end="")
+    games.counter= 0
     if hasOldFile:
         games = oldjson 
+        games.counter += 1
         f.close()
+
 
     ffinal.write(str(games.toJSON()))
     ffinal.close()
     print("Finished!")
 
-print("Price of FM21: ", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+def latest_fetch():
+    #print("Latest fetch done")
+    #print("This is cheapest\n")
+    hasOldFile = False
+    print('[1] - Loading previous data file....', end="")
+    try:
+        with open("storeprices.json", "r") as f:
+            oldjson =jsonpickle.decode(f.read())
+            hasOldFile = True
+            print("Finished!")
+    except FileNotFoundError:
+        print('/!\\ No file found a new one will be created!')
+        pass
+    except :
+        print("json shit KO!")
+        pass
+
+    latestDate = oldjson.vendorPrices[0].list_prices[0].scrapeDate
+    for p in oldjson.vendorPrices:
+        res = sorted(p.list_prices, key=lambda x: datetime.strptime(x.scrapeDate, date_format), reverse=True)
+        if latestDate < res[0].scrapeDate:
+            latestDate = res[0].scrapeDate
+    
+    print("\nLatest data fetch:\t" + latestDate)
+
+def fetch_amount():
+    #print("Number of Fetch amount")
+    #print("This is cheapest\n")
+    hasOldFile = False
+    print('[1] - Loading previous data file....', end="")
+    try:
+        with open("storeprices.json", "r") as f:
+            oldjson =jsonpickle.decode(f.read())
+            hasOldFile = True
+            print("Finished!")
+    except FileNotFoundError:
+        print('/!\\ No file found a new one will be created!')
+        pass
+    except :
+        print("json shit KO!")
+        pass
+    if hasOldFile:
+        print("\nNumber of fetches:\t" + str(oldjson.counter))
+
+
+#print("Price of FM21: ", datetime.now().strftime(date_format))
 
 full_cmd_arguments = sys.argv
 
 argument_list = full_cmd_arguments[1:]
-short_options = "hcfn"
-long_options = ["help", "check", "feed", "now"]
+short_options = "hcfnla"
+long_options = ["help", "cheapest", "feed", "now", "latest-fetch", "fetch-amounts"]
 
 try:
     arguments, values = getopt.getopt(argument_list, short_options, long_options)
@@ -154,18 +208,24 @@ if len(arguments) == 0:
 
 for current_argument, current_value in arguments:
     if current_argument in ("-h", "--help"):
-        print ("\n")
+        print ("Entering help mode\n")
         help_main()
     if current_argument in ("-c", "--cheapest"):
-        print ("Entering check cheapest price mode")
+        print ("Entering check cheapest price mode\n")
         cheapest()
     elif current_argument in ("-f", "--feed"):
-        print ("Entering feed mode")
+        print ("Entering feed mode\n")
         feed()
     elif current_argument in ("-n", "--now"):
-        print ("Entering now mode")
+        print ("Entering now mode\n")
         now()
+    elif current_argument in ("-l", "--latest-fetch"):
+        print ("Entering latest fetch mode\n")
+        latest_fetch()
+    elif current_argument in ("-a", "--fetch-amounts"):
+        print ("Entering fetch amounts mode\n")
+        fetch_amount()
     #elif current_argument in ("-n", "--now"):
     #    print (("Enabling special output mode (%s)") % (current_value))
 
-print("\nEnd Price of FM21: ", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+print("\nEnd Price of FM21: ", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
