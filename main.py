@@ -223,7 +223,7 @@ for current_argument, current_value in arguments:
         print ("Entering latest fetch mode\n")
         latest_fetch()
     elif current_argument in ("-a", "--fetch-amounts"):
-        print ("Entering fetch amounts mode\n")
+        print ("Entering fetch amount mode\n")
         fetch_amount()
     #elif current_argument in ("-n", "--now"):
     #    print (("Enabling special output mode (%s)") % (current_value))
